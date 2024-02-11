@@ -6,30 +6,32 @@ interface User {
 }
 
 class DataStorage {
-  private dataSorage: User[];
+  private dataStorage: User[];
 
   constructor() {
-    this.dataSorage = [];
+    this.dataStorage = [];
   }
 
-  public create(user: User) {
-    this.dataSorage.push(user);
+  public createUser(user: User) {
+    this.dataStorage.push(user);
   }
 
-  public update(user: User) {
-    const index = this.dataSorage.findIndex((storageUser) => {
-      return storageUser.id === user.id;
-    });
-    this.dataSorage[index] = user;
+  public getUser(userId: string) {
+    const user = this.dataStorage.filter((userData) => userData.id === userId);
+    return user;
   }
 
-  public delete(user: User) {
-    const filteredStorage = this.dataSorage.filter((storageUser) => {
-      return storageUser.id !== user.id;
-    });
-    this.dataSorage = filteredStorage;
+  public updateUser(user: User) {
+    const index = this.dataStorage.findIndex((storageUser) => storageUser.id === user.id);
+    this.dataStorage[index] = user;
   }
 
+  public deleteUser(user: User) {
+    const filteredStorage = this.dataStorage.filter((storageUser) => storageUser.id !== user.id);
+    this.dataStorage = filteredStorage;
+  }
 }
 
-export { DataStorage };
+const storage = new DataStorage();
+
+export { storage, User };
