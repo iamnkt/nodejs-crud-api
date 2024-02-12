@@ -1,5 +1,6 @@
 import http from 'node:http';
 import { getRequest } from '../controllers/getRequest';
+import { postRequest } from '../controllers/postRequest';
 
 class App {
   public listen(port: number): void {
@@ -9,13 +10,13 @@ class App {
   }
 
   public createServer(): http.Server {
-    return http.createServer((req, res) => {
+    return http.createServer(async (req, res) => {
       switch (req.method) {
         case 'GET':
           getRequest(req, res);
           break;
         case 'POST':
-          // postReq(req, res);
+          await postRequest(req, res);
           break;
         case 'PUT':
           // putReq(req, res);
@@ -29,3 +30,7 @@ class App {
 }
 
 export { App };
+  function postReq(req: http.IncomingMessage, res: http.ServerResponse<http.IncomingMessage> & { req: http.IncomingMessage; }) {
+    throw new Error('Function not implemented.');
+  }
+

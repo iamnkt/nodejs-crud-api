@@ -12,12 +12,16 @@ class DataStorage {
     this.dataStorage = [];
   }
 
+  public getUsers() {
+    return this.dataStorage;
+  }
+
   public createUser(user: User) {
     this.dataStorage.push(user);
   }
 
   public getUser(userId: string) {
-    const user = this.dataStorage.filter((userData) => userData.id === userId);
+    const user = this.dataStorage.find((userData) => userData.id === userId);
     return user;
   }
 
