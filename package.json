@@ -10,6 +10,7 @@
   "scripts": {
     "start:dev": "nodemon",
     "start:prod": "webpack --mode=production --node-env=production && node ./dist/bundle.cjs",
+    "start:multi": "nodemon -- --multi-node",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "jest --silent"

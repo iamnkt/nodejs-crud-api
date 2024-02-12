@@ -38,6 +38,10 @@ class DataStorage {
   public clearStorage() {
     this.dataStorage = [];
   }
+
+  public updateStorage(storage: User[]) {
+    this.dataStorage = storage;
+  }
 }
 
 const storage = new DataStorage();

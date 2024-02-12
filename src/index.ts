@@ -1,9 +1,10 @@
 import * as dotenv from 'dotenv';
-import { App } from './model/app';
+import { listenMultiNodeApp } from './model/multiNodeAppCreator';
+import { listenSingleNodeApp } from './model/singleNodeAppCreator';
 
 dotenv.config();
 const { PORT } = process.env;
 
-const app = new App();
-app.createServer();
-app.listen(parseInt(PORT, 10));
+(process.argv.slice(2).join('') === '--multi-node')
+  ? listenMultiNodeApp(parseInt(PORT, 10))
+  : listenSingleNodeApp(parseInt(PORT, 10));
