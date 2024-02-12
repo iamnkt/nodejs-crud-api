@@ -15,7 +15,6 @@ module.exports = {
       'max-len': ['error', 130],
       '@typescript-eslint/indent': ['error', 2],
       'import/prefer-default-export': 'off',
-      'import/no-default-export': 'error',
       'no-return-await': 'off',
       'no-console': 'off',
       "class-methods-use-this": "off",

@@ -5,7 +5,7 @@ import { parseBody } from '../util/bodyParser';
 import { isValidData } from '../util/userValidator';
 
 const postRequest = async (req: IncomingMessage, res: ServerResponse) => {
-  if (req.url === '/api/users') {
+  if (req.url === '/api/users' || req.url === '/api/users/') {
     try {
       const rawBody = await parseBody(req);
       const body = JSON.parse(rawBody);
@@ -30,7 +30,7 @@ const postRequest = async (req: IncomingMessage, res: ServerResponse) => {
   } else {
     res.statusCode = 404;
     res.setHeader('Content-Type', 'application/json');
-    res.write(JSON.stringify('Requested page not found'));
+    res.write(JSON.stringify('Bad request'));
     res.end();
   }
 };

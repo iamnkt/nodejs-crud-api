@@ -36,7 +36,7 @@ class App {
       } catch (err) {
         res.statusCode = 500;
         res.setHeader('Content-Type', 'application/json');
-        res.write(JSON.stringify('Something went wrong on a server'));
+        res.write(JSON.stringify('Internal server error'));
         res.end();
       }
     });

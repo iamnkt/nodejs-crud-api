@@ -22,6 +22,11 @@ const deleteRequest = (req: IncomingMessage, res: ServerResponse) => {
       res.write(JSON.stringify('User with provided userId is not found'));
       res.end();
     }
+  } else if (req.url === '/api/users') {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify('userId is not valid'));
+    res.end();
   } else {
     res.statusCode = 404;
     res.setHeader('Content-Type', 'application/json');

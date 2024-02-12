@@ -6,7 +6,7 @@ const getRequest = (req: IncomingMessage, res: ServerResponse) => {
   const baseUrl = req.url.substring(0, req.url.lastIndexOf('/') + 1);
   const id = req.url.split('/')[3];
 
-  if (req.url === '/api/users') {
+  if (req.url === '/api/users' || (req.url === '/api/users/' && id.length === 0)) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     res.write(JSON.stringify(storage.getUsers()));

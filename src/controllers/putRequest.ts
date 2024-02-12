@@ -43,12 +43,9 @@ const putRequest = async (req: IncomingMessage, res: ServerResponse) => {
       res.write(JSON.stringify('User with provided userId is not found'));
       res.end();
     }
-  } else if (req.url === '/api/users') {
-    res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify('userId is not valid'));
   } else {
     res.writeHead(404, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify('Requested page not found'));
+    res.end(JSON.stringify('Bad request'));
   }
 };
 
