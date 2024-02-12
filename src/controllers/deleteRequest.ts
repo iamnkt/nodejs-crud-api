@@ -14,7 +14,7 @@ const deleteRequest = (req: IncomingMessage, res: ServerResponse) => {
     const user = storage.getUser(id);
 
     if (user) {
-      storage.deleteUser(id)
+      storage.deleteUser(id);
       res.statusCode = 204;
       res.end();
     } else {
@@ -22,6 +22,11 @@ const deleteRequest = (req: IncomingMessage, res: ServerResponse) => {
       res.write(JSON.stringify('User with provided userId is not found'));
       res.end();
     }
+  } else {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify('Requested page not found'));
+    res.end();
   }
 };
 

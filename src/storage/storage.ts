@@ -34,6 +34,10 @@ class DataStorage {
     const filteredStorage = this.dataStorage.filter((storageUser) => storageUser.id !== userId);
     this.dataStorage = filteredStorage;
   }
+
+  public clearStorage() {
+    this.dataStorage = [];
+  }
 }
 
 const storage = new DataStorage();

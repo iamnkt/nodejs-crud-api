@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from 'node:http';
-import { storage, User } from '../storage/storage';
+import { storage } from '../storage/storage';
 import { parseBody } from '../util/bodyParser';
 import { isValidData } from '../util/userValidator';
 import { regexV4 } from '../util/uuidRegexp';
@@ -22,7 +22,7 @@ const putRequest = async (req: IncomingMessage, res: ServerResponse) => {
 
         if (body.id) {
           throw new Error();
-        };
+        }
 
         body.id = user.id;
 
@@ -34,15 +34,21 @@ const putRequest = async (req: IncomingMessage, res: ServerResponse) => {
         } else {
           throw new Error();
         }
-      } catch(err) {
+      } catch (err) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ message: 'Request body is not valid' }));
+        res.end(JSON.stringify('Request body is not valid'));
       }
     } else {
       res.statusCode = 404;
       res.write(JSON.stringify('User with provided userId is not found'));
       res.end();
     }
+  } else if (req.url === '/api/users') {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify('userId is not valid'));
+  } else {
+    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify('Requested page not found'));
   }
 };
 

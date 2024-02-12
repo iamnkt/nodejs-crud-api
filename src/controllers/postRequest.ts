@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'node:http';
-import { storage, User } from '../storage/storage';
-import { parseBody } from '../util/bodyParser';
 import crypto from 'node:crypto';
+import { storage } from '../storage/storage';
+import { parseBody } from '../util/bodyParser';
 import { isValidData } from '../util/userValidator';
 
 const postRequest = async (req: IncomingMessage, res: ServerResponse) => {
@@ -12,7 +12,7 @@ const postRequest = async (req: IncomingMessage, res: ServerResponse) => {
 
       if (body.id) {
         throw new Error();
-      };
+      }
       body.id = crypto.randomUUID();
 
       if (isValidData(body)) {
@@ -22,11 +22,16 @@ const postRequest = async (req: IncomingMessage, res: ServerResponse) => {
         res.end();
       } else {
         throw new Error();
-      };
-    } catch(err) {
+      }
+    } catch (err) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ message: 'Request body is not valid' }));
+      res.end(JSON.stringify('Request body is not valid'));
     }
+  } else {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify('Requested page not found'));
+    res.end();
   }
 };
 

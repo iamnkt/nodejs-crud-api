@@ -13,19 +13,31 @@ class App {
 
   public createServer(): http.Server {
     return http.createServer(async (req, res) => {
-      switch (req.method) {
-        case 'GET':
-          getRequest(req, res);
-          break;
-        case 'POST':
-          await postRequest(req, res);
-          break;
-        case 'PUT':
-          await putRequest(req, res);
-          break;
-        case 'DELETE':
-          deleteRequest(req, res);
-          break;
+      try {
+        switch (req.method) {
+          case 'GET':
+            getRequest(req, res);
+            break;
+          case 'POST':
+            await postRequest(req, res);
+            break;
+          case 'PUT':
+            await putRequest(req, res);
+            break;
+          case 'DELETE':
+            deleteRequest(req, res);
+            break;
+          default:
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'application/json');
+            res.write(JSON.stringify('Route not found'));
+            res.end();
+        }
+      } catch (err) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.write(JSON.stringify('Something went wrong on a server'));
+        res.end();
       }
     });
   }

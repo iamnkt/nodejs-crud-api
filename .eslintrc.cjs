@@ -17,6 +17,8 @@ module.exports = {
       'import/prefer-default-export': 'off',
       'import/no-default-export': 'error',
       'no-return-await': 'off',
+      'no-console': 'off',
+      "class-methods-use-this": "off",
       '@typescript-eslint/return-await': ['error', 'always'],
   }
 };

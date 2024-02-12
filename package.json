@@ -9,9 +9,10 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon",
-    "start:prod": "webpack --mode=production --node-env=production",
+    "start:prod": "webpack --mode=production --node-env=production && node ./dist/bundle.cjs",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test": "jest --silent"
   },
   "repository": {
     "type": "git",
@@ -24,12 +25,17 @@
   },
   "homepage": "https://github.com/iamnkt/nodejs-crud-api#readme",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.11.17",
+    "@types/supertest": "^6.0.2",
     "@types/webpack": "^5.28.5",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.3",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",

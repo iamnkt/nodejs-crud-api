@@ -27,6 +27,11 @@ const getRequest = (req: IncomingMessage, res: ServerResponse) => {
       res.write(JSON.stringify('User with provided userId was not found'));
       res.end();
     }
+  } else {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify('Requested page not found'));
+    res.end();
   }
 };
 
