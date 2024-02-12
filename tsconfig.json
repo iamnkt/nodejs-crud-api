@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "es6",
+    "allowJs": false,
+    "sourceMap": true,
+  },
+  "ts-node": {
+    "experimentalSpecifierResolution": "node",
+    "esm": true
+  }, 
+}
