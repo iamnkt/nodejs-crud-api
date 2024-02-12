@@ -30,8 +30,8 @@ class DataStorage {
     this.dataStorage[index] = user;
   }
 
-  public deleteUser(user: User) {
-    const filteredStorage = this.dataStorage.filter((storageUser) => storageUser.id !== user.id);
+  public deleteUser(userId: string) {
+    const filteredStorage = this.dataStorage.filter((storageUser) => storageUser.id !== userId);
     this.dataStorage = filteredStorage;
   }
 }

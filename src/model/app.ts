@@ -1,4 +1,5 @@
 import http from 'node:http';
+import { deleteRequest } from '../controllers/deleteRequest';
 import { getRequest } from '../controllers/getRequest';
 import { postRequest } from '../controllers/postRequest';
 
@@ -19,10 +20,10 @@ class App {
           await postRequest(req, res);
           break;
         case 'PUT':
-          // putReq(req, res);
-          break;
+          // putRequest(req, res);
+          // break;
         case 'DELETE':
-          // deleteReq(req, res);
+          deleteRequest(req, res);
           break;
       }
     });

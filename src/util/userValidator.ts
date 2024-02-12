@@ -1,5 +1,5 @@
-import { regexV4 } from "../controllers/getRequest";
 import { User } from "../storage/storage";
+import { regexV4 } from "./uuidRegexp";
 
 const isValidData = (user: User): user is User => {
   if (!user.id || !regexV4.test(user.id)) {

@@ -1,7 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'node:http';
 import { storage } from '../storage/storage';
-
-export const regexV4 = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i;
+import { regexV4 } from '../util/uuidRegexp';
 
 const getRequest = (req: IncomingMessage, res: ServerResponse) => {
   const baseUrl = req.url.substring(0, req.url.lastIndexOf('/') + 1);
@@ -25,7 +24,7 @@ const getRequest = (req: IncomingMessage, res: ServerResponse) => {
       res.end();
     } else {
       res.statusCode = 404;
-      res.write(JSON.stringify('Provided user is not found'));
+      res.write(JSON.stringify('User with provided userId was not found'));
       res.end();
     }
   }
