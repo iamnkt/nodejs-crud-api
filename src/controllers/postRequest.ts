@@ -12,7 +12,7 @@ const postRequest = async (req: IncomingMessage, res: ServerResponse) => {
 
       if (body.id) {
         throw new Error();
-      }
+      };
       body.id = crypto.randomUUID();
 
       if (isValidData(body)) {
@@ -22,7 +22,7 @@ const postRequest = async (req: IncomingMessage, res: ServerResponse) => {
         res.end();
       } else {
         throw new Error();
-      }
+      };
     } catch(err) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ message: 'Request body is not valid' }));

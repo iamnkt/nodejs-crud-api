@@ -2,6 +2,7 @@ import http from 'node:http';
 import { deleteRequest } from '../controllers/deleteRequest';
 import { getRequest } from '../controllers/getRequest';
 import { postRequest } from '../controllers/postRequest';
+import { putRequest } from '../controllers/putRequest';
 
 class App {
   public listen(port: number): void {
@@ -20,8 +21,8 @@ class App {
           await postRequest(req, res);
           break;
         case 'PUT':
-          // putRequest(req, res);
-          // break;
+          await putRequest(req, res);
+          break;
         case 'DELETE':
           deleteRequest(req, res);
           break;
@@ -31,7 +32,3 @@ class App {
 }
 
 export { App };
-  function postReq(req: http.IncomingMessage, res: http.ServerResponse<http.IncomingMessage> & { req: http.IncomingMessage; }) {
-    throw new Error('Function not implemented.');
-  }
-
